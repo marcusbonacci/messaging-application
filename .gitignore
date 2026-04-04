@@ -1,10 +1,7 @@
 # .**
 .env
 .docker/**
-<<<<<<< HEAD
 **.venv
 **node_modules
-=======
-**.bkp
-**__pycache__**
->>>>>>> faea55888ef4832a9a47027fe625654b988243e8
+**.pyc
+**__pycache__
