@@ -1,1 +1,1 @@
-from .postgres import get_async_pool
+from .postgres import init_pool, close_pool, get_conn

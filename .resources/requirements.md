@@ -23,3 +23,14 @@ Audiences will allow users to send messages to numerous people / groups at once.
 
 If a user is in a group, they're subscribed to said audience.
 
+### Messages
+
+Messages will be stored by audience_id using a MongoDB (TBD), like so:
+
+#### message object (json)
+
+message_id: uuidv7 (fk)
+audience_id: uuidv7 (fk)
+sender_id: uuidv7 (fk)
+created_at: timestamptz @ utc
+updated_at: timestamptz @ utc
