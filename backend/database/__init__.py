@@ -1,1 +1,1 @@
-from .postgres import cursor
+from .postgres import get_async_pool
