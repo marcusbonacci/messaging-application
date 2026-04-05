@@ -1,14 +1,14 @@
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
-from db import postgres
+from app.db import postgres
 
 from psycopg.rows import dict_row
 
 import uuid
 
 # Routers
-import api
+from . import api
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

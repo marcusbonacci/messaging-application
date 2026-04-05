@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from uuid import UUID
 
-from db import postgres
+from app.db import postgres
 from psycopg.rows import dict_row
 
 router = router = APIRouter(prefix="/users")

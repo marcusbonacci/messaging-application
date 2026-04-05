@@ -1,9 +1,18 @@
 name: messaging-application
 services:
+  api:
+    build: ./fast-api
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
   postgres:
     image: postgres:18.3-alpine
     volumes:
-    - ./.docker/postgres/data:/var/lib/postgresql
+      - ./.docker/postgres/data:/var/lib/postgresql
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -13,7 +22,7 @@ services:
   mongodb:
     image: mongo:8.3.0-rc4-noble
     volumes:
-    - ./.docker/mongo/data:/data/db
+      - ./.docker/mongo/data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD} 

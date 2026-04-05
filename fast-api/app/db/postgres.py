@@ -1,14 +1,12 @@
 from typing import Optional
 
 import psycopg_pool
-import dotenv
-
-config = dotenv.dotenv_values("../.env")
+import os
 
 database = 'main'
 user = 'root'
 host = '127.0.0.1'
-password = config["POSTGRES_PASSWORD"]
+password = os.environ["POSTGRES_PASSWORD"] or None
 port = 5432
 
 DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{database}"
