@@ -11,8 +11,6 @@ host = os.environ.get("POSTGRES_HOST", '127.0.0.1')
 password = os.environ.get("POSTGRES_PASSWORD")
 port = os.environ.get("POSTGRES_PORT", 5432)
 
-print(host, password, port)
-
 DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{database}"
 
 _pool: Optional[psycopg_pool.AsyncConnectionPool] = None
