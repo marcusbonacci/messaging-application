@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from dotenv import load_dotenv
 
 from fastapi import FastAPI
 from app.db import postgres
@@ -9,6 +10,8 @@ import uuid
 
 # Routers
 from . import api
+
+load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
