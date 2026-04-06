@@ -10,6 +10,7 @@ import uuid
 
 # Routers
 from . import api
+from . import middleware
 
 load_dotenv()
 
@@ -20,6 +21,9 @@ async def lifespan(app: FastAPI):
     await postgres.close_pool()
 
 app = FastAPI(lifespan=lifespan)
+
+app.middleware("http")(middleware.process_time_header)
+
 app.include_router(api.health_router)
 app.include_router(api.users_router)
 app.include_router(api.audience_router)
