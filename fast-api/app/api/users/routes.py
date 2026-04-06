@@ -54,8 +54,7 @@ async def get_friends(user_id: UUID, limit: int = 10, skip: int = 0):
     query = """
     SELECT
         users.*,
-        friends.created_at,
-        friends.updated_at
+        friends.created_at as friends_since
     FROM 
         friends
         JOIN users ON users.user_id = CASE WHEN friends.user_a_id = %(user_id)s THEN friends.user_b_id ELSE friends.user_a_id END
