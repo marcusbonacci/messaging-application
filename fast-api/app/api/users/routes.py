@@ -53,9 +53,12 @@ async def get_audiences(user_id: UUID, limit: int = 10, skip = 0):
 async def get_friends(user_id: UUID, limit: int = 10, skip: int = 0):
     query = """
     SELECT
-        CASE WHEN user_a_id = %(user_id)s THEN user_b_id ELSE user_a_id END AS friend_id,
-        created_at, updated_at
-    FROM friends
+        users.*,
+        friends.created_at,
+        friends.updated_at
+    FROM 
+        friends
+        JOIN users ON users.user_id = CASE WHEN friends.user_a_id = %(user_id)s THEN friends.user_b_id ELSE friends.user_a_id END
     WHERE %(user_id)s IN (user_a_id, user_b_id)
     LIMIT %(limit)s OFFSET %(skip)s;
     """
