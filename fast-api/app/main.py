@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from dotenv import load_dotenv
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from app.db import postgres
 
 from psycopg.rows import dict_row
@@ -31,3 +31,7 @@ app.include_router(api.audience_router)
 @app.get("/")
 def index():
     return "Server is online!"
+
+@app.get("/favicon.ico")
+async def favicon():
+    return Response(status_code=204)
