@@ -61,8 +61,8 @@ CREATE TABLE audience (
 );
 
 CREATE TABLE memberships (
-    audience_id uuid NOT NULL UNIQUE,
-    user_id uuid NOT NULL UNIQUE,
+    audience_id uuid NOT NULL,
+    user_id uuid NOT NULL,
     joined_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     PRIMARY KEY (audience_id, user_id)
