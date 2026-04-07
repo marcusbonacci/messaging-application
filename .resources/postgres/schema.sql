@@ -65,5 +65,7 @@ CREATE TABLE memberships (
     user_id uuid NOT NULL,
     joined_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    PRIMARY KEY (audience_id, user_id)
+    PRIMARY KEY (audience_id, user_id),
+    FOREIGN KEY (audience_id) REFERENCES audience(audience_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
