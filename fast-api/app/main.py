@@ -12,8 +12,6 @@ import uuid
 from . import api
 from . import middleware
 
-load_dotenv()
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await postgres.init_pool()
