@@ -1,12 +1,12 @@
 from contextlib import asynccontextmanager
+from fastapi import FastAPI, Response
+
+# Env
 from dotenv import load_dotenv
 
-from fastapi import FastAPI, Response
+load_dotenv(".env")
+
 from app.db import postgres
-
-from psycopg.rows import dict_row
-
-import uuid
 
 # Routers
 from . import api
